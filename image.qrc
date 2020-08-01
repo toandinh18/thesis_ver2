@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/logo.png</file>
+        <file>image/khoa_ddt_resize.jpg</file>
+        <file>image/activity.png</file>
+        <file>image/support.png</file>
+        <file>image/working.png</file>
+    </qresource>
+</RCC>
