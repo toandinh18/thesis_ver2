@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include <QTimer>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -9,9 +9,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->stackedWidget->setCurrentIndex(0);
     ui->stackedWidget->insertWidget(1, &page1);
-    connect(ui->pushButton,SIGNAL(clicked(bool)),this, SLOT(pressed_button()));
+
+    QTimer *timer_go = new QTimer(this);
+    timer_go->singleShot(1000,this,SLOT(pressed_button()));
+    delete timer_go;
     connect(&page1, SIGNAL(signal_back_to_main()), this,SLOT(back()));
-    connect(this, SIGNAL(open_camera()), this, SLOT(pressed_button()));
 }
 
 MainWindow::~MainWindow()
@@ -23,6 +25,9 @@ void MainWindow::back()
 {
     qDebug() <<" finally it work";
     ui->stackedWidget->setCurrentIndex(0);
+    QTimer *timer = new QTimer(this);
+    timer->singleShot(2000,this,SLOT(pressed_button()));
+    delete timer;
     //emit open_camera();
 }
 
@@ -50,7 +55,7 @@ void MainWindow::pressed_button()
     Mat frame;
     //tien trinh cho tung frame anh
     qDebug("start recognise");
-    int x = 0;
+    int x = 2;
     while(1) {
         cap.grab();
         cap.retrieve(frame);

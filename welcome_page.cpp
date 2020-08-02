@@ -1,6 +1,6 @@
 #include "welcome_page.h"
 #include "ui_welcome_page.h"
-
+#include <QTimer>
 welcome_page::welcome_page(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::welcome_page)
@@ -10,7 +10,11 @@ welcome_page::welcome_page(QWidget *parent) :
     ui->stackedWidget->insertWidget(1,&study_page);
     ui->stackedWidget->insertWidget(2,&activity_page);
     ui->stackedWidget->insertWidget(3,&service_page);
-    //ui->stackedWidget->insertWidget(4,&finish);
+
+//    QTimer *timer_out = new QTimer(this);
+//    connect(timer_out, SIGNAL(timeout()), this, SLOT(out_app()));
+//    timer_out->start(10000);
+
     connect(&study_page, SIGNAL(homeClicked()),this,SLOT(moveHome()));
     connect(&service_page, SIGNAL(homeClicked1()),this,SLOT(moveHome()));
     connect(&activity_page, SIGNAL(homeClicked2()),this,SLOT(moveHome()));
@@ -52,8 +56,12 @@ void welcome_page::moveHome()
 
 void welcome_page::on_pushButton_4_clicked()
 {
-
     emit signal_call_final();
     //ui->stackedWidget->setCurrentIndex(4);
     qDebug() << "emit call_final";
+}
+
+void welcome_page::out_app()
+{
+    emit signal_call_final();
 }

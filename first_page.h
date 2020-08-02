@@ -26,6 +26,7 @@ private slots:
 
     void on_pushButton_3_clicked();
     void call_back_first();
+    void update_page();
 
 private:
     Ui::first_page *ui;

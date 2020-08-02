@@ -33,6 +33,7 @@ private slots:
     void moveHome();
 
     void on_pushButton_4_clicked();
+    void out_app();
 
 
 private:

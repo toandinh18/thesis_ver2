@@ -17,10 +17,6 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-
-signals:
-    void open_camera();
-
 private slots:
     void pressed_button();
     void back();
