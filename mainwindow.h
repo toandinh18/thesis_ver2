@@ -18,15 +18,17 @@ public:
     ~MainWindow();
 
 
+signals:
+    void open_camera();
+
 private slots:
-    void on_pressed();
-    void on_back();
+    void pressed_button();
+    void back();
 
 public:
     Ui::MainWindow *ui;
     first_page page1;
     play_audio audio;
-
 };
 
 #endif // MAINWINDOW_H

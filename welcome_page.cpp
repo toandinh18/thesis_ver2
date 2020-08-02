@@ -10,7 +10,7 @@ welcome_page::welcome_page(QWidget *parent) :
     ui->stackedWidget->insertWidget(1,&study_page);
     ui->stackedWidget->insertWidget(2,&activity_page);
     ui->stackedWidget->insertWidget(3,&service_page);
-    ui->stackedWidget->insertWidget(4,&finish);
+    //ui->stackedWidget->insertWidget(4,&finish);
     connect(&study_page, SIGNAL(homeClicked()),this,SLOT(moveHome()));
     connect(&service_page, SIGNAL(homeClicked1()),this,SLOT(moveHome()));
     connect(&activity_page, SIGNAL(homeClicked2()),this,SLOT(moveHome()));
@@ -52,6 +52,8 @@ void welcome_page::moveHome()
 
 void welcome_page::on_pushButton_4_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(4);
-    qDebug() << "go to final page";
+
+    emit signal_call_final();
+    //ui->stackedWidget->setCurrentIndex(4);
+    qDebug() << "emit call_final";
 }

@@ -6,9 +6,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->stackedWidget->insertWidget(1, &page1);
-    connect(ui->pushButton,SIGNAL(clicked(bool)),this, SLOT(on_pressed()));
 
+    ui->stackedWidget->setCurrentIndex(0);
+    ui->stackedWidget->insertWidget(1, &page1);
+    connect(ui->pushButton,SIGNAL(clicked(bool)),this, SLOT(pressed_button()));
+    connect(&page1, SIGNAL(signal_back_to_main()), this,SLOT(back()));
+    connect(this, SIGNAL(open_camera()), this, SLOT(pressed_button()));
 }
 
 MainWindow::~MainWindow()
@@ -16,15 +19,16 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_back()
+void MainWindow::back()
 {
     qDebug() <<" finally it work";
+    ui->stackedWidget->setCurrentIndex(0);
+    //emit open_camera();
 }
 
-void MainWindow::on_pressed()
+void MainWindow::pressed_button()
 {
-    qDebug("happy");
-    ui->stackedWidget->setCurrentIndex(0);
+//    ui->stackedWidget->setCurrentIndex(0);
     RaspiCam_Cv cap;
     cap.set(CAP_PROP_FRAME_WIDTH,320);
     cap.set(CAP_PROP_FRAME_HEIGHT,240);

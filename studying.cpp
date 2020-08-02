@@ -187,6 +187,8 @@ void studying::on_next_6_clicked()
     hoctap[9] = gr5->checkedId();
     func(keydata[9],hoctap[9]);
     qDebug() << hoctap[9];
+    ui->stackedWidget->setCurrentIndex(0);
+
     // make sure to clean up
     //postRequest->deleteLater();
     emit homeClicked();

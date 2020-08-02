@@ -21,6 +21,8 @@ public:
     explicit welcome_page(QWidget *parent = 0);
     ~welcome_page();
 
+signals:
+    void signal_call_final();
 
 private slots:
     void on_pushButton_clicked();
@@ -39,8 +41,6 @@ private:
     service service_page;
     activity activity_page;
     play_audio play_first;
-    Final finish;
-
 };
 
 #endif // WELCOME_PAGE_H

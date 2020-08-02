@@ -163,6 +163,7 @@ void service::on_next_5_clicked()
     dichvu[8] = gr5->checkedId();
     func1(keydata1[8],dichvu[8]);
     qDebug() << dichvu[8];
+    ui->stackedWidget->setCurrentIndex(0);
     //postRequest1->deleteLater();
     emit homeClicked1();
 }

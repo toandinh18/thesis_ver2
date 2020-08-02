@@ -98,6 +98,7 @@ void activity::on_home_3_clicked()
     hd[4] = gr1->checkedId();
     func2(keydata2[4],hd[4]);
     qDebug() << hd[4];
+    ui->stackedWidget->setCurrentIndex(0);
     emit homeClicked2();
 }
 
